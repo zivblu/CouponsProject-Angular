@@ -1,0 +1,53 @@
+<form id="companyFormat" name="companyForm" class="form-horizontal" style="margin-left: 20px"
+  #companyFormat="ngForm">
+        <div class="form-group">
+           <label for="selectId" class="control-label col-sm-2">Company ID</label>
+          <div class="col-sm-6">
+          <select class="form-control" name="selectId" id = "selectId"
+            required
+            (change)="getCompany()"
+            [(ngModel)] = "id"
+            #Idselected="ngModel" >
+           <option value ="" disabled selected>--Select Company ID--</option> 
+           <option value={{c.id}} *ngFor="let c of _companies">{{c.id}}</option>
+          </select>
+          <div class="alert alert-danger" *ngIf="Idselected.invalid && (Idselected.dirty || Idselected.touched)">
+              <div *ngIf="Idselected.errors.required">Please Choose Company</div>
+            </div>
+          </div>
+        </div>
+<br>
+
+<div style="margin-left: 20px" class="form-inline" ng-controller="myCtrl">
+    <div class="form-group">
+        <label for="inputId">ID</label>  &nbsp;&nbsp;&nbsp;
+        <input class="form-control"
+             [(ngModel)] = "company.id"
+                type="text"  id="id" name="id" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    <div class="form-group">
+        <label for="inputName">Name</label>  &nbsp;&nbsp;&nbsp;
+        <input class="form-control"
+             [(ngModel)] = "company.companyName"
+                type="text"  id="Name" name="Name" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+  <div class="form-group">
+      <label for="inputName">Password</label>  &nbsp;&nbsp;&nbsp;
+      <input class="form-control"
+           [(ngModel)] = "company.password"
+              type="password"  id="password" name="password" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+  <div class="form-group">
+      <label for="inputName">Email</label>  &nbsp;&nbsp;&nbsp;
+      <input class="form-control"
+           [(ngModel)] = "company.email"
+              type="email"  id="email" name="email" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+
+  <div class="form-group">   
+   <button (click)="removeCompany()"  class="btn btn-danger" [disabled]="!companyFormat.valid" >Remove</button>
+  </div>
+</div>
+    <br>
+    <br>
+</form>

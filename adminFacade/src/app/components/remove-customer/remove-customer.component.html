@@ -1,0 +1,47 @@
+<form id="customerFormat" name="customerForm" class="form-horizontal" style="margin-left: 20px"
+  #customerFormat="ngForm">
+        <div class="form-group">
+           <label for="selectId" class="control-label col-sm-2">Customer ID</label>
+          <div class="col-sm-6">
+          <select class="form-control" name="selectId" id = "selectId"
+            required
+            (change)="getCustomer()"
+            [(ngModel)] = "id"
+            #Idselected="ngModel" >
+           <option value ="" disabled selected>--Select Customer ID--</option> 
+           <option value={{c.id}} *ngFor="let c of _customers">{{c.id}}</option>
+          </select>
+            <div class="alert alert-danger" *ngIf="Idselected.invalid && (Idselected.dirty || Idselected.touched)">
+                <div *ngIf="Idselected.errors.required">Please Choose Customer</div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+<div style="margin-left: 20px" class="form-inline" ng-controller="myCtrl">
+    <div class="form-group">
+        <label for="inputId">ID</label>  &nbsp;&nbsp;&nbsp;
+        <input class="form-control"
+             [(ngModel)] = "customer.id"
+                type="text"  id="id" name="id" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    <div class="form-group">
+        <label for="inputName">Name</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+        <input class="form-control"
+             [(ngModel)] = "customer.custName"
+                type="text"  id="Name" name="Name" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+  <div class="form-group">
+      <label for="inputName">Password</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+      <input class="form-control"
+           [(ngModel)] = "customer.password"
+              type="password"  id="password" name="password" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+
+  <div class="form-group">   
+   <button (click)="removeCustomer()" type="submit" class="btn btn-danger" [disabled]="customerFormat.invalid" >Remove</button>
+  </div>
+</div>
+    <br>
+    <br>              
+</form>

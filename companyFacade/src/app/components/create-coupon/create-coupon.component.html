@@ -1,0 +1,148 @@
+<div class="container">
+<form #couponFormat="ngForm" style="margin-left: 20px" class="form-horizontal" id="couponFormat">
+  <div class="form-group">
+      <label for="inputTitle">Title</label>  &nbsp;&nbsp;&nbsp;
+      <input required 
+              pattern="^[a-zA-Z0-9].*"
+              minlength="2"                           
+              ngModel
+              #title="ngModel"
+      class="form-control" placeholder="Enter Title"
+            [(ngModel)] = "coupon.title"
+              type="text" id="inputTitle" name="title"/>
+              <div class="form-control alert-danger" *ngIf="title.touched && !title.valid">
+                  <div *ngIf="title.errors.required">Please Enter Title</div>
+                  <div *ngIf="title.errors.minlength">Title Should Be Minimum {{title.errors.minlength.requiredLength}} Char</div>
+                  <div *ngIf="title.errors.pattern">Title Dosent Match Pattern</div>
+                </div>    
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+
+    <div class="form-group">
+      <label for="inputStartDate">Start Date</label>  &nbsp;&nbsp;&nbsp;
+      <input required    
+              ngModel     
+              #startDate="ngModel"   
+      class="form-control" placeholder="Enter Start Date"
+           [(ngModel)] = "coupon.startDate"
+              type="date" id="inputStartDate" name="startDate"/>      
+              <div class="form-control alert-danger" *ngIf="startDate.touched && !startDate.valid">
+                <div *ngIf="startDate.errors.required">Please Enter Start Date</div>
+              </div>    
+              &nbsp;&nbsp;&nbsp;
+  </div>
+
+  <div class="form-group">
+      <label for="inputEndDate">End Date</label>  &nbsp;&nbsp;&nbsp;
+      <input required
+              ngModel     
+              #endDate="ngModel"   
+     class="form-control" placeholder="Enter End Date"
+         [(ngModel)] = "coupon.endDate"
+            type="date" id="inputEndDate" name="endDate"/>
+            <div class="form-control alert-danger" *ngIf="endDate.touched && !endDate.valid">
+              <div *ngIf="endDate.errors.required">Please Enter End Date</div>
+            </div>        
+            &nbsp;&nbsp;&nbsp;
+  </div>
+
+  <div class="form-group">
+      <label for="inputAmount">Amount</label>  &nbsp;&nbsp;&nbsp;
+      <input required
+              min="1"
+              pattern="^[1-9].*" 
+              ngModel
+              #amount="ngModel"
+      class="form-control" placeholder="Enter Amount"
+         [(ngModel)] = "coupon.amount"
+            type="number" id="inputAmount" name="Amount"/>
+            <div class="form-control alert-danger" *ngIf="amount.touched && !amount.valid">
+              <div *ngIf="amount.errors.required">Please Enter Amount</div>
+              <div *ngIf="amount.errors.pattern">Amount Dosent Match Pattern</div>
+            </div>       
+            &nbsp;&nbsp;&nbsp;
+  </div>
+
+  <div class="form-group">
+      <label for="inputCouponType">Type</label>  &nbsp;&nbsp;&nbsp;
+      <select  required
+                ngModel
+                #type="ngModel"
+      class="form-control" id="inputCouponType" name="couponType"
+      [(ngModel)] = "coupon.type">   
+      <option value="" disabled selected>--Select Coupon Type--</option>
+                  <option value="RESTURANS">RESTURANS</option>
+                  <option value="ELECTRICITY">ELECTRICITY</option>
+                  <option value="FOOD">FOOD</option>
+                  <option value="HEALTH">HEALTH</option>
+                  <option value="SPORTS">SPORTS</option>
+                  <option value="CAMPING">CAMPING</option>
+                  <option value="TRAVELLING">TRAVELLING</option>
+          </select>
+          <div class="form-control alert-danger" *ngIf="type.touched && !type.valid">
+            <div *ngIf="type.errors.required">Please Enter Type</div>
+          </div>  
+            &nbsp;&nbsp;&nbsp;
+  </div>
+
+  <div class="form-group">
+    <label for="inputPrice">Price</label>  &nbsp;&nbsp;&nbsp;
+    <input required
+            pattern="^[1-9].*"                 
+            ngModel
+            min="0"  
+            step="0.01"
+            #price="ngModel"
+   class="form-control" placeholder="Enter Price"
+       [(ngModel)] = "coupon.price"
+          type="number" id="inputPrice" name="Price"/>      
+          <div class="form-control alert-danger" *ngIf="price.touched && !price.valid">
+            <div *ngIf="price.errors.required">Please Enter Price</div>
+            <div *ngIf="price.errors.pattern">Price Dosent Match Pattern</div>
+          </div>      
+          &nbsp;&nbsp;&nbsp;
+  </div>
+
+  <div class="form-group">
+    <label for="inputMessage">Message</label>  &nbsp;&nbsp;&nbsp;
+    <textarea required
+    #message="ngModel"
+    class="form-control" rows="4" placeholder="Enter Message"
+    [(ngModel)] = "coupon.message" 
+    id="inputMessage" name="Message" required> </textarea>
+    <div class="form-control alert-danger" *ngIf="message.touched && !message.valid">
+        <div *ngIf="message.errors.required">Please Enter Message</div>
+      </div>     
+          &nbsp;&nbsp;&nbsp;
+  </div>
+  
+  <div class="form-group">
+    <label for="inputImage">Image</label>  &nbsp;&nbsp;&nbsp;
+    <select  required
+            ngModel
+            #image="ngModel"
+            class="form-control" placeholder="Enter Image"
+            [(ngModel)] = "coupon.image"
+            id="inputImage" name= "Image">
+            <option value="" disabled selected>--Select Coupon Image--</option>
+            <option value="{{Resturans}}">Resturant</option>
+            <option value="{{Electricity}}">Electricity</option>
+            <option value="{{Food}}">Food</option>
+            <option value="{{Health}}">Health</option>
+            <option value="{{Sports}}">Sports</option>
+            <option value="{{Camping}}">Camping</option>
+            <option value="{{Travelling}}">Travelling</option>
+          </select>
+          <div class="form-control alert-danger" *ngIf="image.touched && !image.valid">
+            <div *ngIf="image.errors.required">Please Enter Image</div>
+          </div>    
+          &nbsp;&nbsp;&nbsp;
+  </div>
+
+  <div class="form-group">
+    <button (click)="createCoupon()" class="btn btn-primary" [disabled]="!couponFormat.valid">Create</button>
+  </div>
+  <br>
+  <br>
+</form>
+</div>

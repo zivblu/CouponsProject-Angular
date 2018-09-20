@@ -1,0 +1,40 @@
+<nav class="navbar navbar-inverse navbar">
+        <div class="container-fluid">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="#">ADMIN</a></div>
+            <ul class="nav navbar-nav justify-content">
+            <li class="dropdown">
+            <a class="dropdown-toggle, navbar-brand" data-toggle="dropdown" href="#"> Company
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a class="navbar-inverse, bg-success" href="#" routerLink="/createcomp">Create Company</a></li>
+                <li><a class="navbar-inverse, bg-success" href="#" routerLink="/removecomp">Remove Company</a></li>
+                <li><a class="navbar-inverse, bg-success" href="#" routerLink="/updatecomp">Update Company</a></li>
+                <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getcomp">Get Company</a></li>
+                <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getcompbycompname">Get Company By Name</a></li>
+                <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getallcomp">Get All Companies</a></li>
+            </ul> </li> 
+            <li class="dropdown">
+            <a class="dropdown-toggle, navbar-brand" data-toggle="dropdown" href="#"> Customer
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                <li><a class="navbar-inverse, bg-success" href="#" routerLink="/createcust">Create Customer</a></li>
+                <li><a class="navbar-inverse, bg-success" href="#" routerLink="/removecust">Remove Customer</a></li>
+                <li><a class="navbar-inverse, bg-success" href="#" routerLink="/updatecust">Update Customer</a></li>
+                <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getcust">Get Customer</a></li>
+                <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getcustbycustname">Get Customer By Name</a></li>
+                <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getallcust">Get All Customers</a></li>
+                 </ul> </li>
+            </ul>     
+                 <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" routerLink="/header"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li></ul>
+           </div>
+
+           <div class="container-fluid bg-1 text-center">
+                <h3></h3>
+                <img src="/assets/eagle.jpg"
+                class="img-circle" alt="Bird">
+                <h3>HELLO ADMIN</h3>
+            </div>
+    </nav>
+<router-outlet></router-outlet>

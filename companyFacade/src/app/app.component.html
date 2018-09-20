@@ -1,0 +1,31 @@
+<nav class="navbar navbar-inverse navbar">
+  <div class="container-fluid">
+  <div class="navbar-header">
+  <a class="navbar-brand" href="#">COMPANY</a></div>
+      <ul class="nav navbar-nav justify-content">
+      <li class="dropdown">
+      <a class="dropdown-toggle, navbar-brand" data-toggle="dropdown" href="#"> Company
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/createcoup">Create Coupon</a></li>
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/removecoup">Remove Coupon</a></li>
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/updatecoup">Update Coupon</a></li>
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getcoup">Get Coupon</a></li>
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getcoupbyenddate">Get Coupon By End Date</a></li>
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getcoupbyprice">Get Coupon By Price</a></li>
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getcoupbytype">Get Coupon By Type</a></li>
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getallcoup">Get All Coupons</a></li>
+      </ul> </li> 
+      </ul>     
+           <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" routerLink="/header"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li></ul>
+     </div>
+
+     <div class="container-fluid bg-1 text-center">
+          <h3></h3>
+          <img src="/assets/dog.jpg"
+          class="img-circle" alt="Dog">
+          <h3>HELLO COMPANY</h3>
+      </div>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,42 @@
+<form id="customerFormat" name="customerForm"  #customerFormat="ngForm" class="form-horizontal" style="margin-left: 20px">
+<div class="container">
+    <div class="row">   
+       <div class="form-group">
+        <label for="inputId" class="control-label col-sm-2">Customer ID</label>
+         <div class="col-sm-6">
+          <select   class="form-control" name="selectId" id = "selectId"
+          required
+          (change)="getCustomer()"
+          [(ngModel)] = "id"
+          #Idselected="ngModel" >
+          <option value ="" disabled selected>--Select Customer  ID--</option> 
+          <option value={{c.id}} *ngFor="let c of _customers">{{c.id}}</option>
+          </select>
+          <div class="alert alert-danger" *ngIf="Idselected.invalid && (Idselected.dirty || Idselected.touched)">
+            <div *ngIf="Idselected.errors.required">Please Choose Customer</div>
+          </div>
+         </div>             
+        </div>               
+    </div>
+  <br>
+  
+  <div class="table" ng-controller="myCtrl">
+  <table class="table table-striped table-bordered" style="margin-left: 10px">
+       <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody id="tbody_tr" var="customer">
+        <tr>
+            <td>{{customer.id}}</td>
+            <td>{{customer.custName}}</td>
+            <td>{{customer.password}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</form>

@@ -1,0 +1,28 @@
+<nav class="navbar navbar-inverse navbar">
+  <div class="container-fluid">
+  <div class="navbar-header">
+  <a class="navbar-brand" href="#">CUSTOMER</a></div>
+      <ul class="nav navbar-nav justify-content">
+      <li class="dropdown">
+      <a class="dropdown-toggle, navbar-brand" data-toggle="dropdown" href="#"> CUSTOMER
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getallcoupons">Get All Coupons</a></li>
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getallpurchasedcoupons">Get All Purchased Coupons</a></li>
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getallpurchasedcouponsbyprice">Get Purchased Coupons By Price</a></li>
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/getallpurchasedcouponsbytype">Get Purchased Coupons By Type</a></li>
+          <li><a class="navbar-inverse, bg-success" href="#" routerLink="/purchasecoupon">Purchase Coupon</a></li>
+      </ul> </li> 
+      </ul>     
+           <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" routerLink="/header"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li></ul>
+     </div>
+
+     <div class="container-fluid bg-1 text-center">
+          <h3></h3>
+          <img src="/assets/cat.jpg"
+          class="img-circle" alt="Cat">
+          <h3>HELLO CUSTOMER</h3>
+      </div>
+</nav>
+<router-outlet></router-outlet>

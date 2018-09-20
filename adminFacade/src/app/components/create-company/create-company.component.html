@@ -1,0 +1,56 @@
+<form #companyFormat="ngForm" style="margin-left: 20px" class="form-inline" id="companyFormat">
+  <div class="form-group">
+      <label for="inputCompanyName">Company Name</label>  &nbsp;&nbsp;&nbsp;
+      <input required 
+              pattern="^[a-zA-Z0-9].*"
+              minlength="3"                           
+              ngModel
+              #companyName="ngModel"
+      class="form-control" placeholder="Enter Name"
+            [(ngModel)] = "company.companyName"
+              type="text" id="name" name="name"/>
+              <div class="form-control alert-danger" *ngIf="companyName.touched && !companyName.valid">
+                  <div *ngIf="companyName.errors.required">Please Enter Name</div>
+                  <div *ngIf="companyName.errors.minlength">Name Should Be Minimum {{companyName.errors.minlength.requiredLength}} Char</div>
+                  <div *ngIf="companyName.errors.pattern">Name Dosent Match Pattern</div>
+                </div>    
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+  <div class="form-group">
+      <label for="inputPassword">Password</label>  &nbsp;&nbsp;&nbsp;
+      <input required 
+              pattern="^[a-zA-Z0-9].*"
+              minlength="4"                           
+              ngModel
+              #password="ngModel"                
+      class="form-control" placeholder="Enter Password"
+           [(ngModel)] = "company.password"
+              type="password" id="password" name="password"/> 
+              <div class="form-control alert-danger" *ngIf="password.touched && !password.valid">
+                  <div *ngIf="password.errors.required">Please Enter Password</div>
+                  <div *ngIf="password.errors.minlength">Password Should Be Minimum {{password.errors.minlength.requiredLength}} char</div>
+                  <div *ngIf="password.errors.pattern">Password Dosent Match Pattern</div>                              
+              </div>            
+              &nbsp;&nbsp;&nbsp;
+  </div>
+  <div class="form-group">
+    <label for="inputEmail">Email</label>  &nbsp;&nbsp;&nbsp;
+    <input required
+            pattern="^[a-zA-Z]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$"
+            ngModel 
+            #Email="ngModel"
+    class="form-control" placeholder="Enter Email"
+          [(ngModel)] = "company.email"
+            type="email" id="email" name="email" />
+            <div class="form-control alert-danger" *ngIf="Email.touched && !Email.valid">
+                <div *ngIf="Email.errors.required">Please Enter Email</div>                                       
+                <div *ngIf="Email.errors.pattern">Email Dosent Match Pattern</div>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+   </div>
+  <div class="form-group">
+    <button (click)="createCompany()" class="btn btn-primary" [disabled]="!companyFormat.valid">Create</button>
+  </div>
+  <br>
+  <br>
+</form>

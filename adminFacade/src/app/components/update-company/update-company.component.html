@@ -1,0 +1,72 @@
+<form id="companyFormat" name="companyForm" class="form-horizontal" style="margin-left: 20px"
+  #companyFormat="ngForm">
+        <div class="form-group">
+           <label for="selectId" class="control-label col-sm-2">Company ID</label>
+          <div class="col-sm-6">
+          <select class="form-control" name="selectId" id = "selectId"
+            required
+            (change)="getCompany()"
+            [(ngModel)] = "id"
+            #Idselected="ngModel" >
+           <option value ="" disabled selected>--Select Company ID--</option> 
+           <option value={{c.id}} *ngFor="let c of _companies">{{c.id}}</option>
+          </select>
+          <div class="alert alert-danger" *ngIf="Idselected.invalid && (Idselected.dirty || Idselected.touched)">
+              <div *ngIf="Idselected.errors.required">Please Choose Company</div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+<div style="margin-left: 20px" class="form-inline" ng-controller="myCtrl">
+  <div class="form-group">
+    <label for="inputId">ID</label>  &nbsp;&nbsp;&nbsp;
+    <input class="form-control"
+         [(ngModel)] = "company.id"
+            type="text"  id="inputId" name="id" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+  <div class="form-group">
+      <label for="inputName">Name</label>  &nbsp;&nbsp;&nbsp;
+      <input class="form-control"
+           [(ngModel)] = "company.companyName"
+              type="text"  id="inputName" name="Name" readonly/>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+  <div class="form-group">
+      <label for="inputPassword">New Password</label>  &nbsp;&nbsp;&nbsp;
+      <input required 
+             pattern="^[a-zA-Z0-9].*"
+             minlength="4"                           
+             ngModel
+             #password="ngModel"  
+      class="form-control" placeholder="Enter Password"
+            [(ngModel)] = "company.password"
+              type="password" id="inputPassword" name="password"/>
+                <div class="form-control alert-danger" *ngIf="password.touched && !password.valid">
+                  <div *ngIf="password.errors.required">Please Enter Password</div>
+                  <div *ngIf="password.errors.minlength">Password Should Be Minimum {{password.errors.minlength.requiredLength}} char</div>
+                  <div *ngIf="password.errors.pattern">Password Dosent Match Pattern</div>                              
+                </div>   
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+  <div class="form-group">
+    <label for="inputEmail">New Email</label>  &nbsp;&nbsp;&nbsp;
+    <input required
+           pattern="^[a-zA-Z]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$"
+           ngModel 
+           #email="ngModel"
+     class="form-control" placeholder="Enter Email"
+        [(ngModel)] = "company.email"
+            type="email" id="inputEmail"  name="email"/>  
+             <div class="form-control alert-danger" *ngIf="email.touched && !email.valid">
+                <div *ngIf="email.errors.required">Please Enter Email</div>                                       
+                <div *ngIf="email.errors.pattern">Email Dosent Match Pattern</div>
+             </div>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+ <div class="form-group">
+  <button (click)="updateCompany()" class="btn btn-warning" [disabled]="companyFormat.invalid" >Update</button>
+ </div>
+</div>
+<br>
+<br>
+</form>

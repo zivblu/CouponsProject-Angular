@@ -1,0 +1,80 @@
+<div class="container">
+  <form id="couponFormat" name="couponForm" class="form-horizontal" style="margin-left: 20px"
+    #couponFormat="ngForm">
+          <div class="form-group">
+             <label for="selectId" class="control-label col-sm-2">Coupon ID</label>
+            <div class="col-sm-6">
+            <select class="form-control" name="selectId" id = "selectId"
+              required
+              (change)="getCoupon()"
+              [(ngModel)] = "id"
+              #Idselected="ngModel" >
+             <option value ="" disabled selected>--Select Coupon ID--</option> 
+             <option value={{c.id}} *ngFor="let c of _coupons">{{c.id}}</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="Idselected.invalid && (Idselected.dirty || Idselected.touched)">
+                <div *ngIf="Idselected.errors.required">Please Choose Coupon</div>
+              </div>
+            </div>
+          </div>
+  
+    <div class="form-group">   
+     <button (click)="purchaseCoupon()"  class="btn btn-primary" style="margin-left: 28.4cm" [disabled]="!couponFormat.valid" >Purchase</button>
+    </div>
+  
+      <div class="form-group">
+          <label for="inputId">ID</label>  &nbsp;&nbsp;&nbsp;
+          <input class="form-control"
+               [(ngModel)] = "coupon.id"
+                  type="text"  id="inputId" name="id" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+      <div class="form-group">
+          <label for="inputTitle">Title</label>  &nbsp;&nbsp;&nbsp;
+          <input class="form-control"
+               [(ngModel)] = "coupon.title"
+                  type="text"  id="inputTitle" name="Title" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    <div class="form-group">
+        <label for="inputStartDate">Start Date</label>  &nbsp;&nbsp;&nbsp;
+        <input class="form-control"
+             [(ngModel)] = "coupon.StartDate"
+                type="date"  id="inputStartDate" name="startDate" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    <div class="form-group">
+        <label for="inputEndDate">End Date</label>  &nbsp;&nbsp;&nbsp;
+        <input class="form-control"
+             [(ngModel)] = "coupon.endDate"
+                type="date"  id="inputEndDate" name="endDate" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    <div class="form-group">
+        <label for="inputAmount">Amount</label>  &nbsp;&nbsp;&nbsp;
+        <input class="form-control"
+             [(ngModel)] = "coupon.amount"
+                type="number"  id="inputAmount" name="Amount" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    <div class="form-group">
+        <label for="inputCouponType">Type</label>  &nbsp;&nbsp;&nbsp;
+        <input class="form-control"
+             [(ngModel)] = "coupon.type"
+                type="text"  id="inputCouponType" name="couponType" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    <div class="form-group">
+        <label for="inputPrice">Price</label>  &nbsp;&nbsp;&nbsp;
+        <input class="form-control"
+             [(ngModel)] = "coupon.price"
+                type="number"  id="inputPrice" name="Price" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    <div class="form-group">
+        <label for="inputMessage">Message</label>  &nbsp;&nbsp;&nbsp;
+        <input class="form-control"
+             [(ngModel)] = "coupon.message"
+                type="text"  id="inputMessage" name="Message" readonly/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+  
+    <div class="form-group">   
+     <button (click)="purchaseCoupon()"  class="btn btn-primary" style="margin-left: 28.4cm" [disabled]="!couponFormat.valid" >Purchase</button>
+    </div>
+      <br>
+      <br>
+  </form>
+  </div>
